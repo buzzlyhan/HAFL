@@ -1,0 +1,57 @@
+{
+  "name": "hafl-tools",
+  "displayName": "HAFL Tools",
+  "description": "Validation and suggestions for HAFL Strict v0.3 files.",
+  "version": "0.0.2",
+  "publisher": "local",
+  "icon": "assets/icon.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters"
+  ],
+  "activationEvents": [
+    "onLanguage:hafl",
+    "onCommand:hafl.goToSection"
+  ],
+  "main": "./extension.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [
+    "hafl",
+    "validator",
+    "completion"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "hafl.goToSection",
+        "title": "HAFL: Go to Section",
+        "category": "HAFL"
+      }
+    ],
+    "languages": [
+      {
+        "id": "hafl",
+        "aliases": [
+          "HAFL",
+          "hafl"
+        ],
+        "extensions": [
+          ".hafl"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "hafl",
+        "scopeName": "source.hafl",
+        "path": "./syntaxes/hafl.tmLanguage.json"
+      }
+    ]
+  }
+}

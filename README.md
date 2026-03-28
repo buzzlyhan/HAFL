@@ -18,6 +18,7 @@ HAFL Strict v0.3 keeps HAFL readable while tightening the format for more reliab
 - `HAFL_Strict_v0_3_spec.md`: Japanese specification document
 - `HAFL_Strict_v0_3.hafl`: HAFL version of the specification content
 - `HAFL_Strict_v0_3_ja.hafl`: Japanese HAFL version
+- `vscode-hafl/`: minimal VS Code extension for validation and suggestions
 
 ## Basic Structure
 
@@ -29,6 +30,14 @@ HAFL Strict v0.3 is organized around `@section` blocks.
 - Block content: `@begin` to `@end`
 
 Repeated sections with the same name are treated as **ordered arrays**, not overwrite targets.
+
+## Mental Model
+
+A practical way to think about HAFL is:
+
+**lightweight section tags with flexible key/value fields**
+
+It is similar to a document made of simple tags, but with fewer reserved words and no closing tag for each section. A section continues until the next `@section` appears.
 
 ## Short Example
 
@@ -48,6 +57,43 @@ title: one line definition
 HAFL Strict v0.3 is a stricter operational form of HAFL.
 @end
 ```
+
+## Example: One Blog Post
+
+The following example shows how one blog article can be written in HAFL.
+
+```hafl
+@article
+id: blog-001
+title: Why HAFL Works Well for Humans and AI
+author: Leo
+status: published
+published_at: 2026-03-28
+
+@summary
+@begin
+HAFL can be treated like a document made of lightweight tags.
+Each section gives a role, and each key adds structured fields.
+@end
+
+@body
+@begin
+When I write in HAFL, I do not think in nested JSON first.
+I think in sections.
+
+That keeps the text readable in a plain editor while still giving AI
+stable boundaries for extraction and updates.
+@end
+
+@tag
+name: hafl
+
+@tag
+name: documentation
+```
+
+This sample uses extension sections such as `@article`, `@summary`, `@body`, and `@tag`.
+In stricter operational workflows, the standard section vocabulary is still preferred when it fits.
 
 ## Core Strict Rules
 

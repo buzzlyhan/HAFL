@@ -1,0 +1,186 @@
+{
+  "scopeName": "source.hafl",
+  "name": "HAFL",
+  "patterns": [
+    {
+      "include": "#invalid"
+    },
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#blocks"
+    },
+    {
+      "include": "#sections"
+    },
+    {
+      "include": "#properties"
+    },
+    {
+      "include": "#lists"
+    }
+  ],
+  "repository": {
+    "invalid": {
+      "patterns": [
+        {
+          "match": "^\\s*(@begins)\\b.*$",
+          "captures": {
+            "1": {
+              "name": "invalid.illegal.keyword.hafl"
+            }
+          }
+        }
+      ]
+    },
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.number-sign.hafl",
+          "match": "^\\s*#.*$"
+        }
+      ]
+    },
+    "blocks": {
+      "patterns": [
+        {
+          "name": "meta.block.hafl",
+          "begin": "^\\s*(@begin)\\s*$",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.control.block.begin.hafl"
+            }
+          },
+          "end": "^\\s*(@end)\\s*$",
+          "endCaptures": {
+            "1": {
+              "name": "keyword.control.block.end.hafl"
+            }
+          },
+          "patterns": [
+            {
+              "match": "^.*$",
+              "name": "string.unquoted.block.hafl"
+            }
+          ]
+        }
+      ]
+    },
+    "sections": {
+      "patterns": [
+        {
+          "match": "^\\s*(@)(meta|project|task|goal|rules|step|memory|avoid|code|data|layout|note|schema)\\s*$",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.section.hafl"
+            },
+            "2": {
+              "name": "entity.name.type.section.hafl"
+            }
+          }
+        },
+        {
+          "match": "^\\s*(@)([A-Za-z][A-Za-z0-9_-]*)\\s*$",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.section.hafl"
+            },
+            "2": {
+              "name": "entity.name.section.hafl"
+            }
+          }
+        }
+      ]
+    },
+    "properties": {
+      "patterns": [
+        {
+          "match": "^\\s*([A-Za-z][A-Za-z0-9_-]*)(\\s*:)(\\s*)(true|false)\\s*$",
+          "captures": {
+            "1": {
+              "name": "support.type.property-name.hafl"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.hafl"
+            },
+            "4": {
+              "name": "constant.language.boolean.hafl"
+            }
+          }
+        },
+        {
+          "match": "^\\s*([A-Za-z][A-Za-z0-9_-]*)(\\s*:)(\\s*)(null)\\s*$",
+          "captures": {
+            "1": {
+              "name": "support.type.property-name.hafl"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.hafl"
+            },
+            "4": {
+              "name": "constant.language.null.hafl"
+            }
+          }
+        },
+        {
+          "match": "^\\s*([A-Za-z][A-Za-z0-9_-]*)(\\s*:)(\\s*)(-?\\d+(?:\\.\\d+)?)\\s*$",
+          "captures": {
+            "1": {
+              "name": "support.type.property-name.hafl"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.hafl"
+            },
+            "4": {
+              "name": "constant.numeric.hafl"
+            }
+          }
+        },
+        {
+          "match": "^\\s*([A-Za-z][A-Za-z0-9_-]*)(\\s*:)(\\s*)(\".*\"|'.*')\\s*$",
+          "captures": {
+            "1": {
+              "name": "support.type.property-name.hafl"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.hafl"
+            },
+            "4": {
+              "name": "string.quoted.hafl"
+            }
+          }
+        },
+        {
+          "match": "^\\s*([A-Za-z][A-Za-z0-9_-]*)(\\s*:)(\\s*)(.+?)\\s*$",
+          "captures": {
+            "1": {
+              "name": "support.type.property-name.hafl"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.hafl"
+            },
+            "4": {
+              "name": "string.unquoted.hafl"
+            }
+          }
+        }
+      ]
+    },
+    "lists": {
+      "patterns": [
+        {
+          "match": "^\\s*(-)(\\s+)(.+?)\\s*$",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.list.begin.hafl"
+            },
+            "3": {
+              "name": "markup.list.unnumbered.hafl"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,29 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="56" y1="40" x2="456" y2="472" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0F766E"/>
+      <stop offset="0.55" stop-color="#155E75"/>
+      <stop offset="1" stop-color="#12324A"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="142" y1="92" x2="392" y2="428" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF9F0"/>
+      <stop offset="1" stop-color="#F2EBDD"/>
+    </linearGradient>
+  </defs>
+  <rect x="24" y="24" width="464" height="464" rx="108" fill="url(#bg)"/>
+  <circle cx="378" cy="128" r="126" fill="#FFFFFF" fill-opacity="0.08"/>
+  <circle cx="126" cy="394" r="94" fill="#FCD34D" fill-opacity="0.09"/>
+  <rect x="124" y="106" width="288" height="336" rx="44" fill="#052A37" fill-opacity="0.18"/>
+  <rect x="112" y="92" width="288" height="336" rx="44" fill="url(#paper)"/>
+  <path d="M336 92H356C380.301 92 400 111.699 400 136V156H380C355.699 156 336 136.301 336 112V92Z" fill="#D6ECE6"/>
+  <path d="M350 92L400 142H376C361.641 142 350 130.359 350 116V92Z" fill="#BEE3DA"/>
+  <circle cx="168" cy="156" r="34" fill="#FF7A59"/>
+  <circle cx="168" cy="156" r="16" stroke="#FFF9F0" stroke-width="10"/>
+  <circle cx="168" cy="156" r="4" fill="#FFF9F0"/>
+  <path d="M186 152V167C186 176.389 178.389 184 169 184H160" stroke="#FFF9F0" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="160" y="198" width="36" height="124" rx="18" fill="#0F766E"/>
+  <rect x="244" y="198" width="36" height="124" rx="18" fill="#0F766E"/>
+  <rect x="160" y="242" width="120" height="34" rx="17" fill="#FFB454"/>
+  <rect x="160" y="350" width="180" height="16" rx="8" fill="#0F766E" fill-opacity="0.84"/>
+  <rect x="160" y="382" width="132" height="16" rx="8" fill="#FFB454"/>
+</svg>
