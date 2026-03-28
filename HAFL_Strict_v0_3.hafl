@@ -1,0 +1,175 @@
+@meta
+name: HAFL Strict v0.3 Specification
+version: 0.3
+status: draft
+purpose: strict operational specification for stable human and AI use
+
+@project
+name: HAFL
+type: human and ai friendly language
+version: 0.3
+status: strict-mode draft
+
+@goal
+target: stable parsing and reusable structured writing
+description: preserve readability while improving machine consistency
+
+@rules
+- use standard section names when possible
+- keep one meaning per line
+- do not duplicate keys inside one section
+- repeated same-named sections are treated as ordered arrays
+- use @begin and @end for multiline content
+- treat @begins as invalid in strict mode
+- avoid ambiguous names like misc tmp final2
+
+@schema
+name: reserved symbols
+
+@data
+description: strong reserved symbols
+
+@step
+name: reserved symbol at
+purpose: section start
+ref: @
+
+@step
+name: reserved symbol colon
+purpose: key value separator
+ref: :
+
+@step
+name: reserved symbol dash
+purpose: list item
+ref: -
+
+@step
+name: reserved symbol hash
+purpose: comment
+ref: #
+
+@schema
+name: reserved keywords
+
+@step
+name: keyword true
+purpose: boolean true
+
+@step
+name: keyword false
+purpose: boolean false
+
+@step
+name: keyword null
+purpose: null value
+
+@step
+name: keyword begin
+purpose: raw block start
+ref: @begin
+
+@step
+name: keyword end
+purpose: raw block end
+ref: @end
+
+@avoid
+- do not use @begins
+- do not redefine true false null
+- do not nest @begin blocks
+- do not use spaces in section names
+
+@schema
+name: standard sections
+
+@rules
+- @meta
+- @project
+- @task
+- @goal
+- @rules
+- @step
+- @memory
+- @avoid
+- @code
+- @data
+- @layout
+- @note
+- @schema
+
+@task
+id: section-ownership
+name: section ownership rule
+status: active
+purpose: define line ownership until next section
+
+@note
+title: section ownership definition
+@begin
+All lines belong to the current section until another section line starts.
+@end
+
+@task
+id: repeated-sections
+name: repeated same-named sections
+status: active
+purpose: preserve order and support array-like interpretation
+
+@note
+title: repeated sections rule
+@begin
+Repeated sections with the same name are treated as ordered arrays, not overwrite targets.
+@end
+
+@task
+id: block-rule
+name: block rule
+status: active
+purpose: safely embed multiline text or code
+
+@code
+language: javascript
+purpose: canonical block sample
+content_type: example
+@begin
+button.addEventListener("click", () => {
+  console.log("clicked")
+})
+@end
+
+@task
+id: validation-errors
+name: strict validation errors
+status: active
+purpose: define minimum machine-checkable violations
+
+@rules
+- orphan list without active section is an error
+- duplicated key in one section is an error
+- missing @end is an error
+- standalone @end is an error
+- @begins is an error
+- blank key is an error
+
+@task
+id: validation-warnings
+name: strict validation warnings
+status: active
+purpose: define quality warnings
+
+@rules
+- non standard section names should warn
+- ambiguous names like misc should warn
+- vague keys like tmp should warn
+- synonym mixing should warn
+
+@goal
+target: readable strict documents
+description: use fixed vocabulary where possible but keep the format human-readable
+
+@note
+title: one line definition
+@begin
+HAFL Strict v0.3 is a stricter operational form of HAFL for stable human and AI interpretation.
+@end

@@ -1,0 +1,175 @@
+@meta
+name: HAFL Strict v0.3 仕様
+version: 0.3
+status: draft
+purpose: 人間とAIによる安定運用のための厳格仕様
+
+@project
+name: HAFL
+type: 人間とAIにやさしい言語
+version: 0.3
+status: strict-mode draft
+
+@goal
+target: 安定したパースと再利用可能な構造化記述
+description: 機械的な一貫性を高めつつ可読性を保つ
+
+@rules
+- 可能な限り標準セクション名を使う
+- 1行に1つの意味だけを書く
+- 1つのセクション内でキーを重複させない
+- 同名セクションの繰り返しは順序付き配列として扱う
+- 複数行コンテンツには @begin と @end を使う
+- strict mode では @begins を無効として扱う
+- misc tmp final2 のような曖昧な名前を避ける
+
+@schema
+name: 予約記号
+
+@data
+description: 強い予約記号
+
+@step
+name: 予約記号 at
+purpose: セクション開始
+ref: @
+
+@step
+name: 予約記号 colon
+purpose: キーと値の区切り
+ref: :
+
+@step
+name: 予約記号 dash
+purpose: リスト項目
+ref: -
+
+@step
+name: 予約記号 hash
+purpose: コメント
+ref: #
+
+@schema
+name: 予約キーワード
+
+@step
+name: キーワード true
+purpose: 真値
+
+@step
+name: キーワード false
+purpose: 偽値
+
+@step
+name: キーワード null
+purpose: null 値
+
+@step
+name: キーワード begin
+purpose: 生ブロック開始
+ref: @begin
+
+@step
+name: キーワード end
+purpose: 生ブロック終了
+ref: @end
+
+@avoid
+- @begins を使わない
+- true false null を再定義しない
+- @begin ブロックをネストしない
+- セクション名に空白を使わない
+
+@schema
+name: 標準セクション
+
+@rules
+- @meta
+- @project
+- @task
+- @goal
+- @rules
+- @step
+- @memory
+- @avoid
+- @code
+- @data
+- @layout
+- @note
+- @schema
+
+@task
+id: section-ownership
+name: セクション所属ルール
+status: active
+purpose: 次のセクションまで行の所属先を定義する
+
+@note
+title: セクション所属の定義
+@begin
+別のセクション行が始まるまで、すべての行は現在のセクションに属する。
+@end
+
+@task
+id: repeated-sections
+name: 同名セクションの繰り返し
+status: active
+purpose: 順序を保持し、配列的な解釈を可能にする
+
+@note
+title: 同名セクションの規則
+@begin
+同じ名前のセクションが繰り返された場合、それらは上書き対象ではなく順序付き配列として扱う。
+@end
+
+@task
+id: block-rule
+name: ブロック規則
+status: active
+purpose: 複数行テキストやコードを安全に埋め込む
+
+@code
+language: javascript
+purpose: 正式なブロック例
+content_type: example
+@begin
+button.addEventListener("click", () => {
+  console.log("clicked")
+})
+@end
+
+@task
+id: validation-errors
+name: strict バリデーションエラー
+status: active
+purpose: 最低限の機械検証可能な違反を定義する
+
+@rules
+- 有効なセクションなしでリストが出現した場合はエラー
+- 1つのセクション内でキーが重複していたらエラー
+- @end がない @begin はエラー
+- 単独で出現する @end はエラー
+- @begins はエラー
+- 空キーはエラー
+
+@task
+id: validation-warnings
+name: strict バリデーション警告
+status: active
+purpose: 品質上の警告を定義する
+
+@rules
+- 標準外のセクション名には警告を出す
+- misc のような曖昧な名前には警告を出す
+- tmp のような曖昧なキーには警告を出す
+- 同義語の混在には警告を出す
+
+@goal
+target: 読みやすい strict 文書
+description: 可能な限り固定語彙を使いつつ、人間に読める形式を保つ
+
+@note
+title: 一行定義
+@begin
+HAFL Strict v0.3 は、人間とAIによる安定した解釈のために HAFL をより厳格に運用する形式である。
+@end
