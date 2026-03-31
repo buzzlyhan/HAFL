@@ -4,7 +4,7 @@
   "description": "Validation and suggestions for HAFL Strict v0.3 files.",
   "version": "0.0.2",
   "publisher": "local",
-  "icon": "assets/icon.png",
+  "icon": "assets/icon-filled.png",
   "engines": {
     "vscode": "^1.85.0"
   },
