@@ -1,10 +1,10 @@
 # HAFL
 
 HAFL stands for **Human and AI Friendly Language**.  
-This repository contains **HAFL Strict v0.3** and the next extension draft **v0.4**.
+This repository contains **HAFL Strict v0.3** and the next extension draft **v0.5**.
 
 - v0.3: stable interpretation, validation, and structured updates
-- v0.4: external structured data orchestration via `@ref`, `@override`, and `@patch`
+- v0.5: external structured data orchestration via `@ref`, `@override`, and `@patch`, with stricter JSON Pointer, HIM, error-code, and schema-validation rules
 
 ## Overview
 
@@ -19,7 +19,7 @@ HAFL Strict v0.3 keeps HAFL readable while tightening the format for more reliab
 ## Included Files
 
 - `HAFL_Strict_v0_3_spec.md`: Japanese specification document for v0.3
-- `HAFL_Strict_v0_4_spec.md`: Japanese specification document for v0.4
+- `HAFL_Strict_v0_5_spec.md`: Japanese specification document for v0.5
 - `HAFL_Strict_v0_3.hafl`: HAFL version of the specification content
 - `HAFL_Strict_v0_3_ja.hafl`: Japanese HAFL version
 - `vscode-hafl/`: minimal VS Code extension for validation and suggestions
@@ -110,5 +110,5 @@ In stricter operational workflows, the standard section vocabulary is still pref
 
 ## Status
 
-This repository currently provides **v0.3** and includes the **v0.4 specification draft**.  
-v0.4 introduces official external references and local override layering while keeping completion behavior in LSP/editor tooling.
+This repository currently provides **v0.3** and includes the **v0.5 specification draft**.
+v0.5 refines official external references and local override layering with strict JSON Pointer paths, stable error codes, HIM conversion rules, and JSON Schema 2020-12 validation.
